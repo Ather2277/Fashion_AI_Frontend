@@ -1,4 +1,3 @@
-
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -31,8 +30,8 @@ export function FormDemographics({
             <SelectItem value="Hispanic">Hispanic</SelectItem>
             <SelectItem value="Latino">Latino</SelectItem>
             <SelectItem value="Western">Western</SelectItem>
-            <SelectItem value="Arabic">Hispanic</SelectItem>
-            <SelectItem value="Indian">Hispanic</SelectItem>
+            <SelectItem value="Arabic">Arabic</SelectItem>   {/* ✅ fixed */}
+            <SelectItem value="Indian">Indian</SelectItem>   {/* ✅ fixed */}
           </SelectContent>
         </Select>
       </div>
