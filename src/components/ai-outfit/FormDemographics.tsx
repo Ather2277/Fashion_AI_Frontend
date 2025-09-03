@@ -29,6 +29,10 @@ export function FormDemographics({
             <SelectItem value="Caucasian">Caucasian</SelectItem>
             <SelectItem value="African">African</SelectItem>
             <SelectItem value="Hispanic">Hispanic</SelectItem>
+            <SelectItem value="Latino">Latino</SelectItem>
+            <SelectItem value="Western">Western</SelectItem>
+            <SelectItem value="Arabic">Hispanic</SelectItem>
+            <SelectItem value="Indian">Hispanic</SelectItem>
           </SelectContent>
         </Select>
       </div>
