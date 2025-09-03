@@ -22,7 +22,7 @@ import AboutPage from "./pages/AboutUs";
 import Cookies from "./pages/CookiePolicyPage";
 import Gallery from "./pages/Gallery";
 import Index from "../../extractor module/extractor_front/src/pages/Index"
-import DressExtractor from "../../extractor module/extractor_front/src/pages/DressExtractor";
+
 
 const queryClient = new QueryClient();
 
@@ -48,7 +48,7 @@ const App = () => (
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
-            <Route path="/dress-extractor" element={<DressExtractor />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </TokenProvider>
