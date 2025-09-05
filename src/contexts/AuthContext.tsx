@@ -23,7 +23,7 @@ type AuthContextType = {
   addTokens: (amount: number) => Promise<void>;
   refreshUser: () => Promise<void>;  // ✅ Added here
   tokens: number;
-  freeTokens: number;
+  freetokens: number;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -112,7 +112,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (name: string, email: string, password: string) => {
     setIsLoading(true);
     try {
-      const session = await authService.createAccount({ name, email, password, tokens: 0, freetokens: 1 });
+      const session = await authService.createAccount({ name, email, password});
       if (session) {
         await refreshUser();
         return { success: true }; 
