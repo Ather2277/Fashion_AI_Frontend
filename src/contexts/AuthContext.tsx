@@ -115,12 +115,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const session = await authService.createAccount({ name, email, password });
       if (session) {
         await refreshUser();
-        toast.success("Account created successfully!");
+        return { success: true }; 
+        //toast.success("Account created successfully!");
       }
-    } catch (error) {
+      return { success: false, message: "Signup failed" };
+    } catch (error:any) {
       console.error("Signup error:", error);
-      toast.error("Account created successfully!. Please Sign in to continue.");
-      throw error;
+      //toast.error("Account created successfully!. Please Sign in to continue.");
+      return { success: false, message: error?.message || "Signup failed" };
+      //throw error;
     } finally {
       setIsLoading(false);
     }
