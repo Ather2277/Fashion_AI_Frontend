@@ -8,7 +8,7 @@ type User = {
   email: string;
   photoUrl?: string;
   tokens: number;
-  freeTokens: number;
+  freetokens: number;
 };
 
 type AuthContextType = {
@@ -23,7 +23,7 @@ type AuthContextType = {
   addTokens: (amount: number) => Promise<void>;
   refreshUser: () => Promise<void>;  // ✅ Added here
   tokens: number;
-  freetokens: number;
+  : number;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [tokens, setTokens] = useState(0);
-  const [freeTokens, setFreeTokens] = useState(0);
+  const [freetokens, setFreeTokens] = useState(0);
   
   useEffect(() => {
     const checkUser = async () => {
@@ -46,10 +46,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             email: currentUser.email,
             photoUrl: currentUser.photoUrl,
             tokens: currentUser.tokens || 0,
-            freeTokens: currentUser.freeTokens || 0
+            freetokens: currentUser.freetokens || 0
           });
           setTokens(currentUser.tokens || 0);
-          setFreeTokens(currentUser.freeTokens || 0);
+          setFreeTokens(currentUser.freetokens || 0);
         }
       } catch (error) {
         console.error("Failed to check user session:", error);
@@ -71,10 +71,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           email: currentUser.email,
           photoUrl: currentUser.photoUrl,
           tokens: currentUser.tokens || 0,
-          freeTokens: currentUser.freeTokens || 0
+          freetokens: currentUser.freetokens || 0
         });
         setTokens(currentUser.tokens || 0);
-        setFreeTokens(currentUser.freeTokens || 0);
+        setFreeTokens(currentUser.freetokens || 0);
       }
     } catch (error) {
       console.error("Failed to refresh user:", error);
@@ -148,7 +148,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const success = await authService.useToken(user.id);
       if (success) {
-        if (freeTokens > 0) {
+        if (freetokens > 0) {
           setFreeTokens(prev => prev - 1);
         } else if (tokens > 0) {
           setTokens(prev => prev - 1);
@@ -194,7 +194,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         addTokens,
         refreshUser, // ✅ added here
         tokens,
-        freeTokens
+        freetokens
       }}
     >
       {children}
