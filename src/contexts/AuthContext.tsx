@@ -112,7 +112,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (name: string, email: string, password: string) => {
     setIsLoading(true);
     try {
-      const session = await authService.createAccount({ name, email, password, freetokens: 0 });
+      const session = await authService.createAccount({ name, email, password, tokens: 0, freetokens: 1 });
       if (session) {
         await refreshUser();
         return { success: true }; 
