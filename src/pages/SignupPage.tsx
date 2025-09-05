@@ -30,9 +30,13 @@ export default function SignupPage() {
 
     setIsSubmitting(true);
     try {
-      await signup(name, email, password);
+      const res = await signup(name, email, password);
+      if (res.success) {
       toast.success("Account created successfully!");
       navigate('/');
+      }else{
+        toast.error(res.message || "Signup failed. Please try again.");
+      }
     } catch (error: any) {
       console.error("Signup error:", error);
       toast.error(error?.message || "Signup failed. Please try again.");
